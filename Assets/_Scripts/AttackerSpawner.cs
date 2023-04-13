@@ -20,7 +20,7 @@ public class AttackerSpawner : MonoBehaviour
 
     private void Update() 
     {
-        isAvailable(); //zjisti jestli je dostupna
+        
         // _resourcesValue = Player.GetResourcesAvailable(); //zjistit proc NULL
     }
 
@@ -28,7 +28,7 @@ public class AttackerSpawner : MonoBehaviour
     public void DeployUnit(int attackingUnitIndex) //vypusti instanci attackera
     {
         //Debug.Log("Resources:" + Player.GetResourcesAvailable());
-        if(_isAvailable)
+        if(Player.PayUnit(attackingUnit[attackingUnitIndex].GetAttackerPrice()))
         {
             Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
             Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
@@ -39,14 +39,14 @@ public class AttackerSpawner : MonoBehaviour
         }
     }
 
-    public bool isAvailable()
-    {
-        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= Player.GetResourcesAvailable()) //nefunguje GetResourcesAvailable
-        {
-            _isAvailable = true;
-        }
-        return _isAvailable;
-    }
+    // public bool isAvailable()
+    // {
+    //     if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= Player.GetResourcesAvailable()) //nefunguje GetResourcesAvailable
+    //     {
+    //         _isAvailable = true;
+    //     }
+    //     return _isAvailable;
+    // }
 
 
 

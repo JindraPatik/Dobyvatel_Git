@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private Faction _faction;
 
-    public float _resourcesValue = 0;
+    private float _resourcesValue = 0;
 
     void Update() 
     {
@@ -33,10 +33,14 @@ public class PlayerController : MonoBehaviour
         return _resourcesValue;
     }
 
-    // public void PayUnit(float price)
-    // {
-
-    // }
+    public bool PayUnit(float price)
+    {
+        if (price >= GetResourcesAvailable())
+        {
+            _resourcesValue -= price;
+        }
+            return true;
+    }
     
 
     
