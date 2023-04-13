@@ -2,55 +2,58 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 
 public class AttackerSpawner : MonoBehaviour
 {
     [SerializeField] AttackingUnitSO[] attackingUnit;
+    [SerializeField] public float ResourcesIncreasedPerSecond;
+    [SerializeField] private TMP_Text _ResourcesTXT;
     int attackingUnitIndex;
     int attackingUnitsCount;
     PlayerController Player;
     private bool _isAvailable;
     private float _resourcesValue;
 
-    private void Start() 
-    {
     
+     void FixedUpdate()
+    {
+        _ResourcesTXT.text = ((int)_resourcesValue).ToString();
+        _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
     }
 
-    private void Update() 
+    public void DeployUnit(int index)
     {
-       
-        // _resourcesValue = Player.GetResourcesAvailable(); //zjistit proc NULL
-    }
-
-
-    public void DeployUnit(int attackingUnitIndex) //vypusti instanci attackera
-    {
-        Debug.Log("Resources:");
-        if(_isAvailable)
+        if(isAvailable())
         {
-            Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
-            Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
-        }
-        else
-        {
-            Debug.Log("Malo zdroju");
+            PayForUnit();
+            SpawnUnitForward(index);
         }
     }
 
-    public bool isAvailable()
+
+    private void SpawnUnitForward(int attackingUnitIndex) //vypusti instanci attackera
     {
-        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= Player._resourcesValue) //opravit nulu na Resources
+        Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
+        Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
+    }
+
+    private bool isAvailable()
+    {
+        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= _resourcesValue) 
         {
             _isAvailable = true;
         }
         return _isAvailable;
+        
     }
 
+    private void PayForUnit()
+    {
+        _resourcesValue -= attackingUnit[attackingUnitIndex].GetAttackerPrice();
+    } 
 
-
-    
 
 
 }

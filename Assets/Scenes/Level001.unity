@@ -1865,6 +1865,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackerSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: _ResourcesTXT
+      value: 
+      objectReference: {fileID: 2109260325}
+    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: ResourcesIncreasedPerSecond
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2733146230181867523, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
       propertyPath: m_RootOrder
       value: 5
