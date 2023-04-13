@@ -20,14 +20,14 @@ public class AttackerSpawner : MonoBehaviour
 
     private void Update() 
     {
-        isAvailable(); //zjisti jestli je dostupna
+       
         // _resourcesValue = Player.GetResourcesAvailable(); //zjistit proc NULL
     }
 
 
     public void DeployUnit(int attackingUnitIndex) //vypusti instanci attackera
     {
-        //Debug.Log("Resources:" + Player.GetResourcesAvailable());
+        Debug.Log("Resources:");
         if(_isAvailable)
         {
             Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
@@ -35,13 +35,13 @@ public class AttackerSpawner : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Malo zdroju");
+            Debug.Log("Malo zdroju");
         }
     }
 
     public bool isAvailable()
     {
-        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= Player.GetResourcesAvailable()) //nefunguje GetResourcesAvailable
+        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= Player._resourcesValue) //opravit nulu na Resources
         {
             _isAvailable = true;
         }

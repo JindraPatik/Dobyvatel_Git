@@ -17,22 +17,15 @@ public class PlayerController : MonoBehaviour
     void Update() 
     {
         _PlayerHealthTXT.text = ((int)_playerHealth).ToString();
-        Debug.Log("Resources v player Controlleru:" + _resourcesValue);
     }
 
     void FixedUpdate()
     {
-        _ResourcesTXT.text = ((int)_resourcesValue).ToString();
         _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
+        _ResourcesTXT.text = ((int)_resourcesValue).ToString();
     }
 
     
-
-    public float GetResourcesAvailable()
-    {
-        return _resourcesValue;
-    }
-
     // public void PayUnit(float price)
     // {
 
