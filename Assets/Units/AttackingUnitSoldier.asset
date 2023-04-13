@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2f67439a3695f4985fbb631439745b, type: 3}
+  m_Name: AttackingUnitSoldier
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 5493394640081735776, guid: 7234016ca36ec344cb735349fd0918cb, type: 3}
+  _attackerMoveSpeed: 10
+  _strenght: 5
+  _price: 8
+  SpawnAvailable: 0
+  _spawnPoint: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+  _canHarvest: 0
+  faction: 0
