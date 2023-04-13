@@ -21,7 +21,7 @@ public class AttackerSpawner : MonoBehaviour
     private void Update() 
     {
         isAvailable(); //zjisti jestli je dostupna
-        _resourcesValue = Player.GetResourcesAvailable(); //zjistit proc NULL
+        // _resourcesValue = Player.GetResourcesAvailable(); //zjistit proc NULL
     }
 
 
@@ -41,7 +41,7 @@ public class AttackerSpawner : MonoBehaviour
 
     public bool isAvailable()
     {
-        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= _resourcesValue) //opravit tu nulu na zdroje
+        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= Player.GetResourcesAvailable()) //nefunguje GetResourcesAvailable
         {
             _isAvailable = true;
         }
