@@ -2111,12 +2111,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4463071479971032422, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
+      propertyPath: crystalSpawnIntervalMax
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463071479971032422, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
       propertyPath: crystalSpawnIntervalMin
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463071479971032422, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
+      propertyPath: _crystalSpawnIntervalMax
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4463071479971032423, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
       propertyPath: m_Name
       value: CrystalSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463071479971032423, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}

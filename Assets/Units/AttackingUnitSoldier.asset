@@ -16,7 +16,8 @@ MonoBehaviour:
   _attackerMoveSpeed: 10
   _strenght: 5
   _price: 10
-  SpawnAvailable: 1
+  SpawnAvailable: 0
   _spawnPoint: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
   _canHarvest: 0
+  _deliveringResources: 0
   faction: 0

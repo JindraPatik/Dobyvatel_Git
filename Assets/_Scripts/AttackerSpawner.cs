@@ -27,7 +27,6 @@ public class AttackerSpawner : MonoBehaviour
     {
         _ResourcesTXT.text = ((int)_resourcesValue).ToString();
         _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
-        Debug.Log("fixedUpdate index" + attackingUnitIndex);
     }
 
     public void DeployUnit(int index)

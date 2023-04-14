@@ -12,6 +12,7 @@ public class AttackingUnitSO : ScriptableObject
     [SerializeField] public bool SpawnAvailable;
     [SerializeField] GameObject _spawnPoint;
     [SerializeField] private bool _canHarvest;
+    [SerializeField] private bool _deliveringResources;
 
     [SerializeField] Faction faction;
     

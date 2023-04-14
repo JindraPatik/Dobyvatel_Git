@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystal: {fileID: 1062964174098230981, guid: 753b6b2ead75d5442874f9447dfaa641, type: 3}
-  crystalSpawnIntervalMin: 1
-  crystalSpawnIntervalMax: 20
+  _crystalSpawnIntervalMin: 1
+  _crystalSpawnIntervalMax: 20
+  _crystalValue: 5
