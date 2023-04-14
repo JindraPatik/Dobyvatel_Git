@@ -10,6 +10,7 @@ public class AttackerSpawner : MonoBehaviour
     [SerializeField] AttackingUnitSO[] attackingUnit;
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private TMP_Text _ResourcesTXT;
+    [SerializeField] private TMP_Text _NotEnoughResourcesTXT;
     int attackingUnitIndex;
     int attackingUnitsCount;
     PlayerController Player;
@@ -17,17 +18,23 @@ public class AttackerSpawner : MonoBehaviour
     private float _resourcesValue;
 
     
-     void FixedUpdate()
+    private void Start() 
+    {
+        _NotEnoughResourcesTXT.enabled = false;
+    }
+
+    void FixedUpdate()
     {
         _ResourcesTXT.text = ((int)_resourcesValue).ToString();
         _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
+        Debug.Log("fixedUpdate index" + attackingUnitIndex);
     }
 
     public void DeployUnit(int index)
     {
-        if(isAvailable())
+        if (HasEnoughResources(index))
         {
-            PayForUnit();
+            PayForUnit(index);
             SpawnUnitForward(index);
         }
     }
@@ -37,22 +44,31 @@ public class AttackerSpawner : MonoBehaviour
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
         Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
+        Debug.Log("fixedUpdate" + attackingUnitIndex);
     }
 
-    private bool isAvailable()
-    {
-        if (attackingUnit[attackingUnitIndex].GetAttackerPrice() >= _resourcesValue) 
-        {
-            _isAvailable = true;
-        }
-        return _isAvailable;
-        
-    }
 
-    private void PayForUnit()
+    private void PayForUnit(int index)
     {
-        _resourcesValue -= attackingUnit[attackingUnitIndex].GetAttackerPrice();
+        _resourcesValue -= attackingUnit[index].GetAttackerPrice();
     } 
+
+    private bool HasEnoughResources(int index)
+    {
+        bool enoughResources;
+        
+        if(_resourcesValue >= attackingUnit[index].GetAttackerPrice())
+        {
+            enoughResources = true;
+           _NotEnoughResourcesTXT.enabled = false;
+        }
+        else
+        {
+             enoughResources = false; 
+            _NotEnoughResourcesTXT.enabled = true;
+        }
+        return enoughResources;
+    }
 
 
 
