@@ -8,39 +8,19 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float _playerHealth = 100; 
     [SerializeField] private TMP_Text _PlayerHealthTXT;
-    [SerializeField] private TMP_Text _ResourcesTXT;
-    [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private Faction _faction;
 
-    private float _resourcesValue = 0;
+    public float _resourcesValue = 0;
 
     void Update() 
     {
         _PlayerHealthTXT.text = ((int)_playerHealth).ToString();
-        Debug.Log("Resources v player Controlleru:" + _resourcesValue);
     }
 
-    void FixedUpdate()
-    {
-        _ResourcesTXT.text = ((int)_resourcesValue).ToString();
-        _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
-    }
+    // public void PayUnit(float price)
+    // {
 
-    
-
-    public float GetResourcesAvailable()
-    {
-        return _resourcesValue;
-    }
-
-    public bool PayUnit(float price)
-    {
-        if (price >= GetResourcesAvailable())
-        {
-            _resourcesValue -= price;
-        }
-            return true;
-    }
+    // }
     
 
     

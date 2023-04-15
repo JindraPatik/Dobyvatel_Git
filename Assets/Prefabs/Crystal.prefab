@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1062964174098230983}
   - component: {fileID: 1062964174098230980}
   - component: {fileID: 2406977997802508279}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Crystal
-  m_TagString: Untagged
+  m_TagString: Crystal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,5 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crystal: {fileID: 1062964174098230981}
-  crystalSpawnIntervalMin: 1
-  crystalSpawnIntervalMax: 5
+  crystalSpawnIntervalMin: 3
+  crystalSpawnIntervalMax: 10
+  _crystalValue: 0

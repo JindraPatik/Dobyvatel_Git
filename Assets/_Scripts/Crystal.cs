@@ -9,6 +9,7 @@ public class Crystal : MonoBehaviour
     [SerializeField] float crystalSpawnIntervalMin;
     [SerializeField] float crystalSpawnIntervalMax;
     float crystalSpawnInterval = 1;
+    [SerializeField] float _crystalValue;
 
     void Start() 
     {
@@ -24,6 +25,14 @@ public class Crystal : MonoBehaviour
         Vector3 crystalSpawnLocation = new Vector3 (UnityEngine.Random.Range(-25f, 25f), 1f, 0f);
         yield return new WaitForSeconds(crystalSpawnInterval);      
         Instantiate(crystal, crystalSpawnLocation, Quaternion.identity);  
+    }
+
+    private void OnTriggerEnter(Collider other) //Znic krystal pri kolizi s Harvesterem
+    {
+        if(other.gameObject.tag == "Harvester")
+        {
+            Destroy(gameObject);
+        }
     }
 
 
