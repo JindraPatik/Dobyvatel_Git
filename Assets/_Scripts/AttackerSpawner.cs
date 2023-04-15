@@ -69,6 +69,8 @@ public class AttackerSpawner : MonoBehaviour
         return enoughResources;
     }
 
+    //implementovat delivery Resources
+
 
 
 }

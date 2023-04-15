@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class AttackingUnitActions : MonoBehaviour
 {
-    [SerializeField] AttackingUnitSO _attackingUnit;
+    [SerializeField] public AttackingUnitSO _attackingUnit;
     Rigidbody _myRigidBody;
     
-
     void Start()
     {
         _myRigidBody = GetComponent<Rigidbody>();
@@ -23,7 +22,31 @@ public class AttackingUnitActions : MonoBehaviour
     {
         float speed = _attackingUnit.GetAttackerMoveSpeed();
         _myRigidBody.velocity = new Vector3 (speed, 0f, 0f);
-        
-        Debug.Log(_myRigidBody.velocity.x);
+    }
+
+       private void MoveBackward()
+    {
+        float speed = _attackingUnit.GetAttackerMoveSpeed();
+        _myRigidBody.velocity = new Vector3 (-speed, 0f, 0f);
+    }
+
+    private void Harvest()
+    {
+        {
+            _attackingUnit._harvesterLoaded = true;
+            MoveBackward();
+        }
+    }
+
+    private void DeliverHarvest()
+    {
+        _attackingUnit._harvesterLoaded = false; 
+    }
+
+    private bool IsHarvester()
+    {
+        return _attackingUnit.CanHarvest();
     }
 }
+
+

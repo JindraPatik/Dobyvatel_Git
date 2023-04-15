@@ -35,5 +35,10 @@ public class Crystal : MonoBehaviour
         }
     }
 
+    public float GetCrystalValue()
+    {
+        return _crystalValue;
+    }
+
 
 }

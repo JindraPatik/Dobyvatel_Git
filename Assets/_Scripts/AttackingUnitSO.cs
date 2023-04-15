@@ -13,6 +13,7 @@ public class AttackingUnitSO : ScriptableObject
     [SerializeField] GameObject _spawnPoint;
     [SerializeField] private bool _canHarvest;
     [SerializeField] private bool _deliveringResources;
+    public bool _harvesterLoaded;
 
     [SerializeField] Faction faction;
     
@@ -46,6 +47,11 @@ public class AttackingUnitSO : ScriptableObject
    public bool CanHarvest()
    {
      return _canHarvest;
+   }
+
+   public bool HarvesterLoaded()
+   {
+          return _harvesterLoaded;
    }
 
     public enum Faction {Heroes = 0, Enemies = 1} 
