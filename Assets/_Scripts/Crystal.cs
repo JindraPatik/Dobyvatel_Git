@@ -10,6 +10,8 @@ public class Crystal : MonoBehaviour
     [SerializeField] float crystalSpawnIntervalMax;
     [SerializeField] float _crystalValue;
     float crystalSpawnInterval = 1;
+    GameObject _thisCrystal;
+    
 
     void Start() 
     {
@@ -24,14 +26,15 @@ public class Crystal : MonoBehaviour
         Debug.Log("Momentalni interval spawnu crystalu je: " + crystalSpawnInterval);
         Vector3 crystalSpawnLocation = new Vector3 (UnityEngine.Random.Range(-25f, 25f), 1f, 0f);
         yield return new WaitForSeconds(crystalSpawnInterval);      
-        Instantiate(crystal, crystalSpawnLocation, Quaternion.identity);  
+        GameObject _thisCrystal = (GameObject) Instantiate(crystal, crystalSpawnLocation, Quaternion.identity);  //instance crystalu
     }
 
     private void OnTriggerEnter(Collider other) //Znic krystal pri kolizi s Harvesterem
     {
         if(other.gameObject.tag == "Harvester")
         {
-            Destroy(gameObject);
+            Destroy(_thisCrystal); //nechce znicit instanci
+            Debug.Log("destroy crystal" + _thisCrystal);
         }
     }
 

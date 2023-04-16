@@ -2163,5 +2163,9 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4463071479971032423, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
+      propertyPath: m_TagString
+      value: Crystal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
