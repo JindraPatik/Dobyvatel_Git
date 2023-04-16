@@ -51,7 +51,6 @@ MonoBehaviour:
   ResourcesIncreasedPerSecond: 1
   _ResourcesTXT: {fileID: 0}
   _NotEnoughResourcesTXT: {fileID: 0}
-  _attackingUnitActions: {fileID: -4403269888927042397, guid: 3333e471f9fe42f42b0b77485720ac18, type: 3}
   _crystal: {fileID: 2406977997802508279, guid: 753b6b2ead75d5442874f9447dfaa641, type: 3}
 --- !u!65 &85267016
 BoxCollider:

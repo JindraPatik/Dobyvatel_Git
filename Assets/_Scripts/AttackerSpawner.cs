@@ -19,14 +19,12 @@ public class AttackerSpawner : MonoBehaviour
     PlayerController Player;
     private bool _isAvailable;
     private float _resourcesValue;
+    
 
     
     private void Start() 
     {
         _NotEnoughResourcesTXT.enabled = false;
-        
-        
-        
     }
 
     void FixedUpdate()
@@ -35,7 +33,7 @@ public class AttackerSpawner : MonoBehaviour
         _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
     }
 
-    public void DeployUnit(int index)
+    public void DeployUnit(int index) //immedietly deploy unit at spawnpoint if enough resources
     {
         if (HasEnoughResources(index))
         {
@@ -45,20 +43,20 @@ public class AttackerSpawner : MonoBehaviour
     }
 
 
-    private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera
+    private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera 
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
         Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
-        Debug.Log("fixedUpdate" + attackingUnitIndex);
+        Debug.Log("spawn position: " + spawnPosition);
     }
 
 
-    private void PayForUnit(int index)
+    private void PayForUnit(int index) //pay for unit price form attackingUnitSO
     {
         _resourcesValue -= attackingUnit[index].GetAttackerPrice();
     } 
 
-    private bool HasEnoughResources(int index)
+    private bool HasEnoughResources(int index) //check if you have resources to buy unit
     {
         bool enoughResources;
         
@@ -77,12 +75,13 @@ public class AttackerSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-
-        if(other.gameObject.tag == "Harvester" && _attackingUnitActions.IsHarvesterLoaded()) //_attacckungUnitActions NULL
+        AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>();
+        
+        if(other.gameObject.tag == "Harvester" && harvester.IsHarvesterLoaded())
         {
-            
             _resourcesValue += _crystal.GetCrystalValue();
-            Debug.Log(_crystal.GetCrystalValue() + "added to resources");
+            // harvester.DeliverHarvest();
+            Debug.Log(_crystal.GetCrystalValue() + " added to resources");
         }
     }
 

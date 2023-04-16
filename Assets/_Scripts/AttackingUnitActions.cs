@@ -10,7 +10,6 @@ public class AttackingUnitActions : MonoBehaviour
     private bool _harvesterIsLoaded;
     
     
-    
     void Start()
     {
         _myRigidBody = GetComponent<Rigidbody>();
@@ -30,9 +29,8 @@ public class AttackingUnitActions : MonoBehaviour
 
     private void LoadHarvester()
     {
-        {
-           _harvesterIsLoaded = true;
-        }
+        _harvesterIsLoaded = true;
+        
     }
 
     public bool IsHarvesterLoaded()
@@ -43,7 +41,8 @@ public class AttackingUnitActions : MonoBehaviour
     public void DeliverHarvest()
     {
         _harvesterIsLoaded = false;
-        Destroy(gameObject);
+        // Destroy(gameObject);
+        Debug.Log("Harvester destroyed!!!");
     }
 
     public bool IsHarvester() 
