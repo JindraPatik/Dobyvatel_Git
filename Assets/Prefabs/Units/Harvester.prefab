@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1856564884173863254}
   - component: {fileID: -4403269888927042397}
   - component: {fileID: 1804458981475996266}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Harvester
   m_TagString: Harvester
   m_Icon: {fileID: 0}

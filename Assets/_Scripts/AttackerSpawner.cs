@@ -11,6 +11,9 @@ public class AttackerSpawner : MonoBehaviour
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private TMP_Text _ResourcesTXT;
     [SerializeField] private TMP_Text _NotEnoughResourcesTXT;
+    AttackingUnitActions _attackingUnitActions;
+    [SerializeField] Crystal _crystal;
+
     int attackingUnitIndex;
     int attackingUnitsCount;
     PlayerController Player;
@@ -21,6 +24,9 @@ public class AttackerSpawner : MonoBehaviour
     private void Start() 
     {
         _NotEnoughResourcesTXT.enabled = false;
+        
+        
+        
     }
 
     void FixedUpdate()
@@ -34,12 +40,12 @@ public class AttackerSpawner : MonoBehaviour
         if (HasEnoughResources(index))
         {
             PayForUnit(index);
-            SpawnUnitForward(index);
+            SpawnUnit(index);
         }
     }
 
 
-    private void SpawnUnitForward(int attackingUnitIndex) //vypusti instanci attackera
+    private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
         Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
@@ -67,6 +73,17 @@ public class AttackerSpawner : MonoBehaviour
             _NotEnoughResourcesTXT.enabled = true;
         }
         return enoughResources;
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+
+        if(other.gameObject.tag == "Harvester" && _attackingUnitActions.IsHarvesterLoaded()) //_attacckungUnitActions NULL
+        {
+            
+            _resourcesValue += _crystal.GetCrystalValue();
+            Debug.Log(_crystal.GetCrystalValue() + "added to resources");
+        }
     }
 
 

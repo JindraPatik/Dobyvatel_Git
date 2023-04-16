@@ -6,14 +6,12 @@ using UnityEngine;
 public class AttackingUnitSO : ScriptableObject
 {
     [SerializeField] GameObject _prefab;
+    [SerializeField] GameObject _spawnPoint;
     [SerializeField] float _attackerMoveSpeed;
     [SerializeField] private float _strenght;
     [SerializeField] private int _price;
     [SerializeField] public bool SpawnAvailable;
-    [SerializeField] GameObject _spawnPoint;
     [SerializeField] private bool _canHarvest;
-    [SerializeField] private bool _deliveringResources;
-    public bool _harvesterLoaded;
 
     [SerializeField] Faction faction;
     
@@ -49,10 +47,6 @@ public class AttackingUnitSO : ScriptableObject
      return _canHarvest;
    }
 
-   public bool HarvesterLoaded()
-   {
-          return _harvesterLoaded;
-   }
 
     public enum Faction {Heroes = 0, Enemies = 1} 
 }

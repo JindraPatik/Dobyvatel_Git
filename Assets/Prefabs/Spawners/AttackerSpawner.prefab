@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2733146230181867523}
   - component: {fileID: 2733146230181867522}
+  - component: {fileID: 85267016}
   m_Layer: 0
   m_Name: AttackerSpawner
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2733146230181867521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -39.95, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3, z: 13.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -47,3 +48,21 @@ MonoBehaviour:
   attackingUnit:
   - {fileID: 11400000, guid: b8d6b9d550e1c3e48908ff69b6e2d4b0, type: 2}
   - {fileID: 11400000, guid: 0a393d08bf6a44e479e17f7f3691bb4f, type: 2}
+  ResourcesIncreasedPerSecond: 1
+  _ResourcesTXT: {fileID: 0}
+  _NotEnoughResourcesTXT: {fileID: 0}
+  _attackingUnitActions: {fileID: -4403269888927042397, guid: 3333e471f9fe42f42b0b77485720ac18, type: 3}
+  _crystal: {fileID: 2406977997802508279, guid: 753b6b2ead75d5442874f9447dfaa641, type: 3}
+--- !u!65 &85267016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2733146230181867521}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

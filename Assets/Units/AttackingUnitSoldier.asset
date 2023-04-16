@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: AttackingUnitSoldier
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5493394640081735776, guid: 7234016ca36ec344cb735349fd0918cb, type: 3}
+  _spawnPoint: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
   _attackerMoveSpeed: 10
   _strenght: 5
   _price: 10
-  SpawnAvailable: 0
-  _spawnPoint: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+  SpawnAvailable: 1
   _canHarvest: 0
-  _deliveringResources: 0
   faction: 0

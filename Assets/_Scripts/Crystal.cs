@@ -8,8 +8,8 @@ public class Crystal : MonoBehaviour
     [SerializeField] GameObject crystal;
     [SerializeField] float crystalSpawnIntervalMin;
     [SerializeField] float crystalSpawnIntervalMax;
-    float crystalSpawnInterval = 1;
     [SerializeField] float _crystalValue;
+    float crystalSpawnInterval = 1;
 
     void Start() 
     {

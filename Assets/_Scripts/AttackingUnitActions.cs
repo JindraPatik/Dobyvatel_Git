@@ -6,47 +6,64 @@ public class AttackingUnitActions : MonoBehaviour
 {
     [SerializeField] public AttackingUnitSO _attackingUnit;
     Rigidbody _myRigidBody;
+    private float _speed;
+    private bool _harvesterIsLoaded;
+    
+    
     
     void Start()
     {
         _myRigidBody = GetComponent<Rigidbody>();
+        _speed = (_attackingUnit.GetAttackerMoveSpeed()); //take value of _speed from AttackingUnitSO
     }
 
     
     void Update()
     {
-        MoveForward();
+        Move(_speed); //constantly move x axis 
     }
 
-    private void MoveForward()
+    private void Move(float speed) //move x axis
     {
-        float speed = _attackingUnit.GetAttackerMoveSpeed();
         _myRigidBody.velocity = new Vector3 (speed, 0f, 0f);
     }
 
-       private void MoveBackward()
-    {
-        float speed = _attackingUnit.GetAttackerMoveSpeed();
-        _myRigidBody.velocity = new Vector3 (-speed, 0f, 0f);
-    }
-
-    private void Harvest()
+    private void LoadHarvester()
     {
         {
-            _attackingUnit._harvesterLoaded = true;
-            MoveBackward();
+           _harvesterIsLoaded = true;
         }
     }
 
-    private void DeliverHarvest()
+    public bool IsHarvesterLoaded()
     {
-        _attackingUnit._harvesterLoaded = false; 
+        return _harvesterIsLoaded;
     }
 
-    private bool IsHarvester()
+    public void DeliverHarvest()
+    {
+        _harvesterIsLoaded = false;
+        Destroy(gameObject);
+    }
+
+    public bool IsHarvester() 
     {
         return _attackingUnit.CanHarvest();
     }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        
+        if (other.gameObject.tag == "Crystal" && IsHarvester() && !_harvesterIsLoaded)
+        {
+            _speed = -_speed; //flip direction of unit x
+            LoadHarvester(); 
+            Debug.Log("kolize s crystalem");
+        }
+        
+    }
+
+   
 }
 
 
