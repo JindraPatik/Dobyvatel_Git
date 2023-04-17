@@ -41,7 +41,6 @@ public class AttackingUnitActions : MonoBehaviour
     public void DeliverHarvest()
     {
         _harvesterIsLoaded = false;
-        // Destroy(gameObject);
         Debug.Log("Harvester destroyed!!!");
     }
 
@@ -50,14 +49,15 @@ public class AttackingUnitActions : MonoBehaviour
         return _attackingUnit.CanHarvest();
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other) //Harvester collision with crystal
     {
         
-        if (other.gameObject.tag == "Crystal" && IsHarvester() && !_harvesterIsLoaded)
+        if (other.gameObject.tag == "Crystal" && IsHarvester() && !IsHarvesterLoaded()) //nefunguje isHarvesterLoaded
         {
             _speed = -_speed; //flip direction of unit x
-            LoadHarvester(); 
-            Debug.Log("kolize s crystalem");
+            LoadHarvester();
+            _harvesterIsLoaded = true; 
+            // Debug.Log("kolize s crystalem");
         }
         
     }

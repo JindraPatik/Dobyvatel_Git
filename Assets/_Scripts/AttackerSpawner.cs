@@ -73,15 +73,16 @@ public class AttackerSpawner : MonoBehaviour
         return enoughResources;
     }
 
-    private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
     {
         AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>();
         
         if(other.gameObject.tag == "Harvester" && harvester.IsHarvesterLoaded())
         {
             _resourcesValue += _crystal.GetCrystalValue();
-            // harvester.DeliverHarvest();
             Debug.Log(_crystal.GetCrystalValue() + " added to resources");
+            Destroy(other.gameObject); //Destroy Harvester
+            Debug.Log(other.gameObject + " has been destroyed");
         }
     }
 

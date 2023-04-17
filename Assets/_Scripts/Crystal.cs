@@ -5,38 +5,37 @@ using UnityEngine;
 
 public class Crystal : MonoBehaviour
 {
-    [SerializeField] GameObject crystal;
+    [SerializeField] private GameObject crystal;
     [SerializeField] float crystalSpawnIntervalMin;
     [SerializeField] float crystalSpawnIntervalMax;
     [SerializeField] float _crystalValue;
-    float crystalSpawnInterval = 1;
-    GameObject _thisCrystal;
+    [SerializeField] float _crystalSpawnRangeLeft;
+    [SerializeField] float _crystalSpawnRangeRight;
+    bool _spawnCrystals; 
+    
     
 
     void Start() 
     {
-        crystalSpawnInterval = UnityEngine.Random.Range(crystalSpawnIntervalMin, crystalSpawnIntervalMax);
-        StartCoroutine(spawnCrystal(crystalSpawnInterval));
+        _spawnCrystals = true; //spawning crystals enabled
+
+        StartCoroutine(spawnCrystal());
     }
 
-    IEnumerator spawnCrystal(float crystalSpawnInterval)
+    IEnumerator spawnCrystal()
     {
-        //spawn crystal in random range x -25, 25 and time crystalSpawnTinterval;
+        while(_spawnCrystals)
         
-        Debug.Log("Momentalni interval spawnu crystalu je: " + crystalSpawnInterval);
-        Vector3 crystalSpawnLocation = new Vector3 (UnityEngine.Random.Range(-25f, 25f), 1f, 0f);
-        yield return new WaitForSeconds(crystalSpawnInterval);      
-        GameObject _thisCrystal = (GameObject) Instantiate(crystal, crystalSpawnLocation, Quaternion.identity);  //instance crystalu
-    }
-
-    private void OnTriggerEnter(Collider other) //Znic krystal pri kolizi s Harvesterem
-    {
-        if(other.gameObject.tag == "Harvester")
         {
-            Destroy(_thisCrystal); //nechce znicit instanci
-            Debug.Log("destroy crystal" + _thisCrystal);
+            float crystalSpawnInterval = UnityEngine.Random.Range(crystalSpawnIntervalMin, crystalSpawnIntervalMax);
+            Debug.Log("Momentalni interval spawnu crystalu je: " + crystalSpawnInterval);
+            Vector3 crystalSpawnLocation = new Vector3 (UnityEngine.Random.Range(_crystalSpawnRangeLeft, _crystalSpawnRangeRight), 1f, 0f);
+            yield return new WaitForSeconds(crystalSpawnInterval);      
+            GameObject _thisCrystal = (GameObject) Instantiate(crystal, crystalSpawnLocation, Quaternion.identity);  
         }
     }
+
+    
 
     public float GetCrystalValue()
     {
