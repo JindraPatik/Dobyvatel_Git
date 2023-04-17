@@ -1742,6 +1742,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636160280}
   m_CullTransparentMesh: 1
+--- !u!114 &1710249217 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4463071479971032422, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
+  m_PrefabInstance: {fileID: 4463071479151740091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ec4606b4024ba4c8c3de9fbb5c3913, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1879535043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AttackerSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: _crystal
+      value: 
+      objectReference: {fileID: 1710249217}
     - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
       propertyPath: _ResourcesTXT
       value: 
