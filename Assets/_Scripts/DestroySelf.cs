@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class DestroySelf : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other) //Znic krystal pri kolizi s Harvesterem
+      
+
+    private void OnTriggerEnter(Collider other) //Znic krystal pri kolizi s Harvesterem pokud neni nalozeny
     {
+
         if(other.gameObject.tag == "Harvester")
         {
-            Destroy(this.gameObject); //nechce znicit instanci
+            Destroy(this.gameObject); 
             Debug.Log("destroy crystal" + this.gameObject);
         }
     }

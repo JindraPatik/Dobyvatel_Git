@@ -11,13 +11,14 @@ public class AttackerSpawner : MonoBehaviour
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private TMP_Text _ResourcesTXT;
     [SerializeField] private TMP_Text _NotEnoughResourcesTXT;
-    AttackingUnitActions _attackingUnitActions;
     [SerializeField] Crystal _crystal;
+    
+    
 
     int attackingUnitIndex;
-    int attackingUnitsCount;
-    PlayerController Player;
-    private bool _isAvailable;
+    
+    
+    
     private float _resourcesValue;
     
 
@@ -25,6 +26,7 @@ public class AttackerSpawner : MonoBehaviour
     private void Start() 
     {
         _NotEnoughResourcesTXT.enabled = false;
+        
     }
 
     void FixedUpdate()
@@ -75,16 +77,20 @@ public class AttackerSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
     {
-        AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>();
+        AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>(); //x
         
-        if(other.gameObject.tag == "Harvester" && harvester.IsHarvesterLoaded())
-        {
-            _resourcesValue += _crystal.GetCrystalValue();
-            Debug.Log(_crystal.GetCrystalValue() + " added to resources");
-            Destroy(other.gameObject); //Destroy Harvester
-            Debug.Log(other.gameObject + " has been destroyed");
+        if(other.gameObject.TryGetComponent(out HarvesterScript harvesterScript))
+            {
+
+            if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
+                {
+                    _resourcesValue += _crystal.GetCrystalValue();
+                    Debug.Log(_crystal.GetCrystalValue() + " added to resources");
+                    Destroy(other.gameObject); //Destroy Harvester
+                    Debug.Log(other.gameObject + " has been destroyed");
+                }
+            }
         }
-    }
 
 
 

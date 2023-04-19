@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2093,6 +2093,10 @@ PrefabInstance:
       propertyPath: _crystal
       value: 
       objectReference: {fileID: 1710249217}
+    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: Harvester
+      value: 
+      objectReference: {fileID: 2487323073636644415, guid: 3333e471f9fe42f42b0b77485720ac18, type: 3}
     - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
       propertyPath: _ResourcesTXT
       value: 
