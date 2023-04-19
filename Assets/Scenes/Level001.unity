@@ -2094,10 +2094,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1710249217}
     - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
-      propertyPath: Harvester
-      value: 
-      objectReference: {fileID: 2487323073636644415, guid: 3333e471f9fe42f42b0b77485720ac18, type: 3}
-    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
       propertyPath: _ResourcesTXT
       value: 
       objectReference: {fileID: 2109260325}
@@ -2205,6 +2201,10 @@ PrefabInstance:
     - target: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
       propertyPath: m_Name
       value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}

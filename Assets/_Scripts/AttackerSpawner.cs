@@ -49,7 +49,7 @@ public class AttackerSpawner : MonoBehaviour
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
         Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
-        Debug.Log("spawn position: " + spawnPosition);
+        // Debug.Log("spawn position: " + spawnPosition);
     }
 
 
@@ -77,17 +77,16 @@ public class AttackerSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
     {
-        AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>(); //x
+        // AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>(); //x
         
         if(other.gameObject.TryGetComponent(out HarvesterScript harvesterScript))
             {
 
-            if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
+            if(other.gameObject.tag == "Harvester" && !harvesterScript.IsHarvesterLoaded())
                 {
                     _resourcesValue += _crystal.GetCrystalValue();
-                    Debug.Log(_crystal.GetCrystalValue() + " added to resources");
-                    Destroy(other.gameObject); //Destroy Harvester
-                    Debug.Log(other.gameObject + " has been destroyed");
+                    // Debug.Log(_crystal.GetCrystalValue() + " added to resources");
+                    
                 }
             }
         }

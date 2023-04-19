@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 85267016}
   m_Layer: 0
   m_Name: AttackerSpawner
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
   ResourcesIncreasedPerSecond: 1
   _ResourcesTXT: {fileID: 0}
   _NotEnoughResourcesTXT: {fileID: 0}
-  _crystal: {fileID: 2406977997802508279, guid: 753b6b2ead75d5442874f9447dfaa641, type: 3}
+  _crystal: {fileID: 0}
 --- !u!65 &85267016
 BoxCollider:
   m_ObjectHideFlags: 0
