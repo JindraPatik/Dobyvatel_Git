@@ -22,12 +22,10 @@ public class HarvesterScript : MonoBehaviour
    private void Update() 
    {
           Move(_speed); //constantly move x axis
-          Debug.Log("Je harvester nalozeny? " + IsHarvesterLoaded());
    }
 
-   public void UnLoadHarvester()
+   public void UnLoadHarvester() 
    {
-        
         _isLoaded = false;
         this.myMeshRenderer.material.SetColor("_Red", Color.red);
    }

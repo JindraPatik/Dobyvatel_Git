@@ -5,28 +5,19 @@ using UnityEngine;
 using TMPro;
 
 
-public class AttackerSpawner : MonoBehaviour
+public class UnitSpawner : MonoBehaviour
 {
     [SerializeField] AttackingUnitSO[] attackingUnit;
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private TMP_Text _ResourcesTXT;
     [SerializeField] private TMP_Text _NotEnoughResourcesTXT;
     [SerializeField] Crystal _crystal;
-    
-    
-
     int attackingUnitIndex;
-    
-    
-    
     private float _resourcesValue;
-    
-
     
     private void Start() 
     {
         _NotEnoughResourcesTXT.enabled = false;
-        
     }
 
     void FixedUpdate()
@@ -44,20 +35,12 @@ public class AttackerSpawner : MonoBehaviour
         }
     }
 
-
     private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera 
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
         GameObject instanceUnit = (GameObject) Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
-        GetUnitInstance(instanceUnit);
         // Debug.Log("spawn position: " + spawnPosition);
     }
-    
-    public GameObject GetUnitInstance(GameObject instance)
-    {
-        return instance;
-    }
-
 
     private void PayForUnit(int index) //pay for unit price form attackingUnitSO
     {
@@ -80,23 +63,6 @@ public class AttackerSpawner : MonoBehaviour
         }
         return enoughResources;
     }
-
-    private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
-    {
-        // AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>(); //x
-        
-        if(other.gameObject.TryGetComponent(out HarvesterScript harvesterScript))
-            {
-
-            if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
-                {
-                    _resourcesValue += _crystal.GetCrystalValue();
-                    // Debug.Log(_crystal.GetCrystalValue() + " added to resources");
-                    
-                }
-            }
-        }
-
 
 
 }

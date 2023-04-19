@@ -24,8 +24,4 @@ public class Button_Click : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         _source.PlayOneShot(_uncompressClip);
     }
 
-    public void IWasClicked()
-    {
-        Debug.Log("tadaa cklicked button");
-    }
 }
