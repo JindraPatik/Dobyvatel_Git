@@ -48,8 +48,14 @@ public class AttackerSpawner : MonoBehaviour
     private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera 
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
-        Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
+        GameObject instanceUnit = (GameObject) Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
+        GetUnitInstance(instanceUnit);
         // Debug.Log("spawn position: " + spawnPosition);
+    }
+    
+    public GameObject GetUnitInstance(GameObject instance)
+    {
+        return instance;
     }
 
 
@@ -82,7 +88,7 @@ public class AttackerSpawner : MonoBehaviour
         if(other.gameObject.TryGetComponent(out HarvesterScript harvesterScript))
             {
 
-            if(other.gameObject.tag == "Harvester" && !harvesterScript.IsHarvesterLoaded())
+            if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
                 {
                     _resourcesValue += _crystal.GetCrystalValue();
                     // Debug.Log(_crystal.GetCrystalValue() + " added to resources");
