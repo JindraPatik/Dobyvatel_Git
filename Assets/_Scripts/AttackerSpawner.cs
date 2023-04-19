@@ -11,43 +11,28 @@ public class AttackerSpawner : MonoBehaviour
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private TMP_Text _ResourcesTXT;
     [SerializeField] private TMP_Text _NotEnoughResourcesTXT;
-    AttackingUnitActions _attackingUnitActions;
     [SerializeField] Crystal _crystal;
+    
+    
 
     int attackingUnitIndex;
-    int attackingUnitsCount;
-    PlayerController Player;
-    private bool _isAvailable;
+    
+    
+    
     private float _resourcesValue;
-    [SerializeField] public GameObject harvesterInstance;
-    MeshRenderer _myMeshRenderer;
-    AttackingUnitActions AuA;
+    
 
     
     private void Start() 
     {
         _NotEnoughResourcesTXT.enabled = false;
-        // AttackingUnitActions AuA = harvesterInstance.GetComponent<AttackingUnitActions>();
-        _myMeshRenderer = GetComponent<MeshRenderer>();
+        
     }
 
     void FixedUpdate()
     {
         _ResourcesTXT.text = ((int)_resourcesValue).ToString();
         _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
-    }
-
-    private void Update() 
-    {
-
-    // if(AuA.IsHarvesterLoaded()) // test jestli je nalozenej
-    //     {
-    //         _myMeshRenderer.material.SetColor("_Red", Color.red);
-    //     }
-    //     else
-    //     {
-    //         _myMeshRenderer.material.SetColor("_Red", Color.green);
-    //     }    
     }
 
     public void DeployUnit(int index) //immedietly deploy unit at spawnpoint if enough resources
@@ -63,8 +48,14 @@ public class AttackerSpawner : MonoBehaviour
     private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera 
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
-        GameObject harvesterInstance = (GameObject)Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
-        Debug.Log("spawn position: " + spawnPosition);
+        GameObject instanceUnit = (GameObject) Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
+        GetUnitInstance(instanceUnit);
+        // Debug.Log("spawn position: " + spawnPosition);
+    }
+    
+    public GameObject GetUnitInstance(GameObject instance)
+    {
+        return instance;
     }
 
 
@@ -92,19 +83,19 @@ public class AttackerSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
     {
-        if(other.gameObject.TryGetComponent(out AttackingUnitActions AuA))
+        // AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>(); //x
         
-        {
-            if(other.gameObject.tag == "Harvester" && AuA.IsHarvesterLoaded())
+        if(other.gameObject.TryGetComponent(out HarvesterScript harvesterScript))
             {
-                _resourcesValue += _crystal.GetCrystalValue();
-                Debug.Log(_crystal.GetCrystalValue() + " added to resources");
-                AuA.DeliverHarvest();
-                Destroy(other.gameObject); //Destroy Harvester
+
+            if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
+                {
+                    _resourcesValue += _crystal.GetCrystalValue();
+                    // Debug.Log(_crystal.GetCrystalValue() + " added to resources");
+                    
+                }
             }
         }
-    }
-        
 
 
 

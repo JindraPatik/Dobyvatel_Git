@@ -28,14 +28,12 @@ public class Crystal : MonoBehaviour
         
         {
             float crystalSpawnInterval = UnityEngine.Random.Range(crystalSpawnIntervalMin, crystalSpawnIntervalMax);
-            Debug.Log("Momentalni interval spawnu crystalu je: " + crystalSpawnInterval);
+            // Debug.Log("Momentalni interval spawnu crystalu je: " + crystalSpawnInterval);
             Vector3 crystalSpawnLocation = new Vector3 (UnityEngine.Random.Range(_crystalSpawnRangeLeft, _crystalSpawnRangeRight), 1f, 0f);
             yield return new WaitForSeconds(crystalSpawnInterval);      
             GameObject _thisCrystal = (GameObject) Instantiate(crystal, crystalSpawnLocation, Quaternion.identity);  
         }
     }
-
-    
 
     public float GetCrystalValue()
     {
