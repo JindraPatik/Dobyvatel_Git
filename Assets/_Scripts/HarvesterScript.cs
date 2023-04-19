@@ -60,6 +60,7 @@ public class HarvesterScript : MonoBehaviour
                     {
                          LoadHarvester();
                          _speed = -_speed; //flip direction of unit x
+                         Destroy(other.gameObject);
                     }
           
                else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
