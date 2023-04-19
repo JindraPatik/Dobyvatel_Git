@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5493394640081735776, guid: 7234016ca36ec344cb735349fd0918cb, type: 3}
   _spawnPoint: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
-  _attackerMoveSpeed: 10
+  _attackerMoveSpeed: 25
   _strenght: 5
   _price: 10
   SpawnAvailable: 1

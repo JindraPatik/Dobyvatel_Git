@@ -2098,6 +2098,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2109260325}
     - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: harvesterInstance
+      value: 
+      objectReference: {fileID: 2487323073636644415, guid: 3333e471f9fe42f42b0b77485720ac18, type: 3}
+    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
       propertyPath: _NotEnoughResourcesTXT
       value: 
       objectReference: {fileID: 1019861059}

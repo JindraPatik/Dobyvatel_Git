@@ -19,18 +19,35 @@ public class AttackerSpawner : MonoBehaviour
     PlayerController Player;
     private bool _isAvailable;
     private float _resourcesValue;
-    
+    [SerializeField] public GameObject harvesterInstance;
+    MeshRenderer _myMeshRenderer;
+    AttackingUnitActions AuA;
 
     
     private void Start() 
     {
         _NotEnoughResourcesTXT.enabled = false;
+        // AttackingUnitActions AuA = harvesterInstance.GetComponent<AttackingUnitActions>();
+        _myMeshRenderer = GetComponent<MeshRenderer>();
     }
 
     void FixedUpdate()
     {
         _ResourcesTXT.text = ((int)_resourcesValue).ToString();
         _resourcesValue += ResourcesIncreasedPerSecond * Time.fixedDeltaTime;
+    }
+
+    private void Update() 
+    {
+
+    // if(AuA.IsHarvesterLoaded()) // test jestli je nalozenej
+    //     {
+    //         _myMeshRenderer.material.SetColor("_Red", Color.red);
+    //     }
+    //     else
+    //     {
+    //         _myMeshRenderer.material.SetColor("_Red", Color.green);
+    //     }    
     }
 
     public void DeployUnit(int index) //immedietly deploy unit at spawnpoint if enough resources
@@ -46,7 +63,7 @@ public class AttackerSpawner : MonoBehaviour
     private void SpawnUnit(int attackingUnitIndex) //vypusti instanci attackera 
     {
         Vector3 spawnPosition = new Vector3(attackingUnit[attackingUnitIndex].GetAttackerSpawnPosition().x, 1f, 0f);
-        Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
+        GameObject harvesterInstance = (GameObject)Instantiate(attackingUnit[attackingUnitIndex].GetPrefab(), spawnPosition, Quaternion.identity);
         Debug.Log("spawn position: " + spawnPosition);
     }
 
@@ -75,16 +92,19 @@ public class AttackerSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
     {
-        AttackingUnitActions harvester = other.GetComponent<AttackingUnitActions>();
+        if(other.gameObject.TryGetComponent(out AttackingUnitActions AuA))
         
-        if(other.gameObject.tag == "Harvester" && harvester.IsHarvesterLoaded())
         {
-            _resourcesValue += _crystal.GetCrystalValue();
-            Debug.Log(_crystal.GetCrystalValue() + " added to resources");
-            Destroy(other.gameObject); //Destroy Harvester
-            Debug.Log(other.gameObject + " has been destroyed");
+            if(other.gameObject.tag == "Harvester" && AuA.IsHarvesterLoaded())
+            {
+                _resourcesValue += _crystal.GetCrystalValue();
+                Debug.Log(_crystal.GetCrystalValue() + " added to resources");
+                AuA.DeliverHarvest();
+                Destroy(other.gameObject); //Destroy Harvester
+            }
         }
     }
+        
 
 
 

@@ -6,10 +6,15 @@ public class DestroySelf : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other) //Znic krystal pri kolizi s Harvesterem
     {
-        if(other.gameObject.tag == "Harvester")
+        if(other.gameObject.TryGetComponent(out AttackingUnitActions AuA))
         {
-            Destroy(this.gameObject); //nechce znicit instanci
-            Debug.Log("destroy crystal" + this.gameObject);
+            bool isLoaded = AuA.IsHarvesterLoaded();
+            
+            if(other.gameObject.tag == "Harvester" && isLoaded)
+            {
+                Destroy(this.gameObject); //nechce znicit instanci
+                Debug.Log("destroy crystal" + this.gameObject);
+            }
         }
     }
 }
