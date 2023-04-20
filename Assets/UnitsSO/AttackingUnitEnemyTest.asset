@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c2f67439a3695f4985fbb631439745b, type: 3}
+  m_Name: AttackingUnitEnemyTest
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 5493394640081735776, guid: 3ec7a59055e61c042872e1143e5c5428, type: 3}
+  _spawnPoint: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
+  _attackerMoveSpeed: 0
+  _strenght: 5
+  _price: 3
+  SpawnAvailable: 1
+  _canHarvest: 0
+  faction: 1

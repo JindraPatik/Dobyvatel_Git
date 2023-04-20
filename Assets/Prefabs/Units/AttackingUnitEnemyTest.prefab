@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5493394640081735777}
   - component: {fileID: 7854361414283315263}
   m_Layer: 10
-  m_Name: AttackingUnit
+  m_Name: AttackingUnitEnemyTest
   m_TagString: AttackingUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,4 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c3c6863f052fe4b9ffc4db05cefefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _unit: {fileID: 11400000, guid: 0a393d08bf6a44e479e17f7f3691bb4f, type: 2}
+  _unit: {fileID: 11400000, guid: e774dc1b72904334e9648f397a110be3, type: 2}

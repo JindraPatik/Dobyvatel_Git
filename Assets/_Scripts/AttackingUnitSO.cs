@@ -15,38 +15,46 @@ public class AttackingUnitSO : ScriptableObject
 
     [SerializeField] Faction faction;
     
-   public GameObject GetPrefab()
-   {
-          return _prefab;
-   }
+     public GameObject GetPrefab()
+     {
+               return _prefab;
+     }
 
-   public float GetAttackerMoveSpeed()
-   {
-        return _attackerMoveSpeed;
-   }
-   
-   
-   public float GetAttackerStrenght()
-   {
-        return _strenght;
-   }
+     public float GetAttackerMoveSpeed()
+     {
+          return _attackerMoveSpeed;
+     }
+     
+     
+     public float GetAttackerStrenght()
+     {
+          return _strenght;
+     }
 
-   public int GetAttackerPrice()
-   {
-        return _price;
-   }
+     public int GetAttackerPrice()
+     {
+          return _price;
+     }
 
-   public Vector3 GetAttackerSpawnPosition()
-   {
-        Vector3 attackerSpawnPosition = new Vector3 (_spawnPoint.transform.position.x, 0f, 0f);
-        return attackerSpawnPosition;
-   }
+     public Vector3 GetAttackerSpawnPosition()
+     {
+          Vector3 attackerSpawnPosition = new Vector3 (_spawnPoint.transform.position.x, 0f, 0f);
+          return attackerSpawnPosition;
+     }
 
-   public bool CanHarvest()
-   {
-     return _canHarvest;
-   }
+     public bool CanHarvest()
+     {
+          return _canHarvest;
+     }
+
+     public enum Faction {Heroes = 0, Enemies = 1} 
+     private Faction _faction;
+
+     public Faction GetFaction()
+     {
+          return _faction;
+     }
 
 
-    public enum Faction {Heroes = 0, Enemies = 1} 
+
 }

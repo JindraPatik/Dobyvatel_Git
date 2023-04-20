@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c2f67439a3695f4985fbb631439745b, type: 3}
-  m_Name: AttackingUnitSoldier
+  m_Name: AttackingUnitHarvester
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5493394640081735776, guid: 7234016ca36ec344cb735349fd0918cb, type: 3}
+  _prefab: {fileID: 2487323073636644415, guid: 3333e471f9fe42f42b0b77485720ac18, type: 3}
   _spawnPoint: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
-  _attackerMoveSpeed: 10
-  _strenght: 5
-  _price: 10
+  _attackerMoveSpeed: 15
+  _strenght: 1
+  _price: 1
   SpawnAvailable: 1
-  _canHarvest: 0
+  _canHarvest: 1
   faction: 0
