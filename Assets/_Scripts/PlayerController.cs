@@ -22,8 +22,8 @@ public class PlayerController : MonoBehaviour
     private void Start() 
     {
        
-        
-        _playerHealth = _playerSO.GetPlayerHealh();
+        Debug.Log(_unitActions.GetUnitStrenght()); 
+        _playerHealth = _playerSO.GetPlayerHealh(); //tohle nefunguje!!!
        
     }
     
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private void TakedamageFromUnit()
     {
         _playerHealth -= _unitActions.GetUnitStrenght();
+        Debug.Log("Unit damage: " + _unitActions.GetUnitStrenght());
+
     }
 
 
@@ -55,10 +57,10 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         
-        if(GetMyFactionString() != GetUnitFactionString() && other.gameObject.CompareTag("Unit"))
+        if(other.gameObject.CompareTag("Unit"))
         {
-
             TakedamageFromUnit();
+            Debug.Log("collision with base");
         }
         
     }

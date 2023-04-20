@@ -20,6 +20,7 @@ private void Start()
     _speed = (_unit.GetAttackerMoveSpeed()); //take value of _speed from AttackingUnitSO
     _myStrenght = _unit.GetAttackerStrenght();
     _myFaction = _unit.GetFaction();
+    
 
 }
 
