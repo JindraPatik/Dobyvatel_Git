@@ -6,14 +6,13 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] PlayerSO _playerSO;
+    [SerializeField] private PlayerSO _playerSO;
     [SerializeField] private float _playerHealth; 
     [SerializeField] private TMP_Text _PlayerHealthTXT;
-    [SerializeField] private PlayerSO.Faction _myfaction;
-    [SerializeField] GameObject _unit;
-
+    [SerializeField] private GameObject _unit;
     private UnitActions _unitActions;
-    AttackingUnitSO.Faction _unitFaction;
+    private PlayerSO.Faction _myfaction;
+    
 
     private void Awake() 
     {
@@ -22,12 +21,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start() 
     {
-        _unitFaction = _unitActions.GetUnitFaction();
+       
+        
         _playerHealth = _playerSO.GetPlayerHealh();
-        _myfaction = _playerSO.GetFaction();
-
-
-        Debug.Log(this.gameObject + " faction: " + _myfaction);
+       
     }
     
     // public float _resourcesValue = 0;
@@ -36,6 +33,36 @@ public class PlayerController : MonoBehaviour
     {
         _PlayerHealthTXT.text = ((int)_playerHealth).ToString();
     }
+
+    private void TakedamageFromUnit()
+    {
+        _playerHealth -= _unitActions.GetUnitStrenght();
+    }
+
+
+    private string GetMyFactionString()
+    {
+        string _myfaction = _playerSO.GetFaction().ToString();
+        return _myfaction;
+    }
+
+    private string GetUnitFactionString()
+    {
+        string _unitFaction = _unitActions.GetUnitFaction().ToString();
+        return _unitFaction;
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        
+        if(GetMyFactionString() != GetUnitFactionString() && other.gameObject.CompareTag("Unit"))
+        {
+
+            TakedamageFromUnit();
+        }
+        
+    }
+
 
 
 

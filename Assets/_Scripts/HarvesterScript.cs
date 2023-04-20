@@ -11,6 +11,13 @@ public class HarvesterScript : MonoBehaviour
    private MeshRenderer myMeshRenderer;
    private const string _crystalTag = "Crystal";
    private const string _spawnerTag = "Spawner";  
+   UnitSpawner _unitSpawner;
+   [SerializeField] GameObject _spawner;
+
+   private void Awake() 
+   {
+          _unitSpawner = _spawner.GetComponent<UnitSpawner>();
+   }
 
    private void Start() 
    {

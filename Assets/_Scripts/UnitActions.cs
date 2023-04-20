@@ -21,9 +21,6 @@ private void Start()
     _myStrenght = _unit.GetAttackerStrenght();
     _myFaction = _unit.GetFaction();
 
-    Debug.Log("My faction: " + _myFaction);
-    
-
 }
 
 private void Update() 
@@ -32,10 +29,25 @@ private void Update()
 }
 
 
-
 private void Move(float speed) //move x axis
 {
     _myRigidBody.velocity = new Vector3 (speed, 0f, 0f);
+}
+
+
+private void UnitDie() 
+{
+    Destroy(this.gameObject);
+}
+
+public AttackingUnitSO.Faction GetUnitFaction()
+{
+    return _myFaction;
+}
+
+public float GetUnitStrenght()
+{
+    return _myStrenght;
 }
 
 private void OnTriggerEnter(Collider other) 
@@ -73,26 +85,5 @@ private void OnTriggerEnter(Collider other)
     }
 
 }
-
-private void Attack()
-{
-
-}
-
-private void UnitDie() 
-{
-    Destroy(this.gameObject);
-}
-
-public AttackingUnitSO.Faction GetUnitFaction()
-{
-    return _myFaction;
-}
-
-public float GetUnitStrenght()
-{
-    return _myStrenght;
-}
-
 
 }

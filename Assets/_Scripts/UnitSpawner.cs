@@ -11,9 +11,15 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField] public float ResourcesIncreasedPerSecond;
     [SerializeField] private TMP_Text _ResourcesTXT;
     [SerializeField] private TMP_Text _NotEnoughResourcesTXT;
-    [SerializeField] Crystal _crystal;
+    Crystal _crystalScript;
+    [SerializeField] GameObject _crystal; 
     int attackingUnitIndex;
     private float _resourcesValue;
+
+    private void Awake() 
+    {
+        _crystalScript = _crystal.GetComponent<Crystal>();
+    }
     
     private void Start() 
     {
@@ -63,6 +69,21 @@ public class UnitSpawner : MonoBehaviour
         }
         return enoughResources;
     }
+
+    private void OnTriggerEnter(Collider other) //collision with Base when harvester is loaded
+    {
+        
+        if(other.gameObject.TryGetComponent(out HarvesterScript harvesterScript))
+            {
+
+            if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
+                {
+                    _resourcesValue += _crystalScript.GetCrystalValue();
+                    Debug.Log(_crystalScript.GetCrystalValue() + " added to resources");
+                    
+                }
+            }
+        }
 
 
 }

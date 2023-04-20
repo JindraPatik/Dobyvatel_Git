@@ -243,7 +243,7 @@ MonoBehaviour:
   ResourcesIncreasedPerSecond: 1
   _ResourcesTXT: {fileID: 2109260325}
   _NotEnoughResourcesTXT: {fileID: 1019861059}
-  _crystal: {fileID: 1710249217}
+  _crystal: {fileID: 1361229397}
 --- !u!1001 &503753585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1487,6 +1487,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099401656}
   m_CullTransparentMesh: 1
+--- !u!1 &1361229397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4463071479971032423, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
+  m_PrefabInstance: {fileID: 4463071479151740091}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1462362606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,7 +1960,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4463071479971032422, guid: 842781d6e1b950046b7ce4cba283de27, type: 3}
   m_PrefabInstance: {fileID: 4463071479151740091}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1361229397}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21ec4606b4024ba4c8c3de9fbb5c3913, type: 3}
@@ -2390,6 +2395,10 @@ PrefabInstance:
     - target: {fileID: 2882414328682679406, guid: 465456caab01fc245ac4ad9bf6c00c86, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882414328682679406, guid: 465456caab01fc245ac4ad9bf6c00c86, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465456caab01fc245ac4ad9bf6c00c86, type: 3}
