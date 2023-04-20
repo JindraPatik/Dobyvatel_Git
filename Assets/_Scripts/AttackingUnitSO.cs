@@ -12,7 +12,6 @@ public class AttackingUnitSO : ScriptableObject
     [SerializeField] private int _price;
     [SerializeField] public bool SpawnAvailable;
     [SerializeField] private bool _canHarvest;
-
     [SerializeField] Faction faction;
     
      public GameObject GetPrefab()

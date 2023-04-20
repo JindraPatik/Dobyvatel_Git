@@ -6,23 +6,42 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _playerHealth = 100; 
+    [SerializeField] PlayerSO _playerSO;
+    [SerializeField] private float _playerHealth; 
     [SerializeField] private TMP_Text _PlayerHealthTXT;
-    [SerializeField] private Faction _faction;
+    [SerializeField] private PlayerSO.Faction _myfaction;
+    [SerializeField] GameObject _unit;
 
-    public float _resourcesValue = 0;
+    private UnitActions _unitActions;
+    AttackingUnitSO.Faction _unitFaction;
 
-    void Update() 
+    private void Awake() 
+    {
+        _unitActions = _unit.GetComponent<UnitActions>();
+    }
+
+    private void Start() 
+    {
+        _unitFaction = _unitActions.GetUnitFaction();
+        _playerHealth = _playerSO.GetPlayerHealh();
+        _myfaction = _playerSO.GetFaction();
+
+
+        Debug.Log(this.gameObject + " faction: " + _myfaction);
+    }
+    
+    // public float _resourcesValue = 0;
+
+    void Update()
     {
         _PlayerHealthTXT.text = ((int)_playerHealth).ToString();
     }
 
-    // public void PayUnit(float price)
-    // {
 
-    // }
+
+    
     
 
     
-    public enum Faction {Heroes = 0, Enemies = 1}
+    
 }

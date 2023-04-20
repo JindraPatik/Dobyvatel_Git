@@ -9,6 +9,7 @@ private float _myStrenght;
 private float _speed;
 Rigidbody _myRigidBody;
 AttackingUnitSO.Faction _myFaction;
+private const string UnitTag = "Unit";
 
 
 
@@ -20,7 +21,7 @@ private void Start()
     _myStrenght = _unit.GetAttackerStrenght();
     _myFaction = _unit.GetFaction();
 
-    Debug.Log("My fation: " + _myFaction);
+    Debug.Log("My faction: " + _myFaction);
     
 
 }
@@ -39,9 +40,12 @@ private void Move(float speed) //move x axis
 
 private void OnTriggerEnter(Collider other) 
 {
+    // Debug.Break();
+
     if(other.gameObject.TryGetComponent(out UnitActions unit))
     {
-        if(_myFaction != unit.GetUnitFaction()) //pokud ma jednotka a utocnik jinou frakci
+        if(_myFaction != unit.GetUnitFaction() && other.gameObject.CompareTag(UnitTag)) //pokud ma jednotka a utocnik jinou frakci
+        Debug.Log("Trigger works.");
         {
             float attackerStrenght = unit.GetUnitStrenght();
 
@@ -53,13 +57,13 @@ private void OnTriggerEnter(Collider other)
 
             else if(_myStrenght < attackerStrenght)
             {
-                Destroy(this.gameObject);
+               UnitDie();
                 Debug.Log("Moje jednotka byla zabita.");
             }
 
             else //remiza
             {
-                Destroy(this.gameObject);
+                UnitDie();
                 Destroy(other.gameObject);
                 Debug.Log("Jednotky se navzajem znicily.");
 

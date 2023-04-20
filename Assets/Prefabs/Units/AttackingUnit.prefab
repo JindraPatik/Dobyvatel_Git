@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7854361414283315263}
   m_Layer: 10
   m_Name: AttackingUnit
-  m_TagString: AttackingUnit
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

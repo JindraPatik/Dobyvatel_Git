@@ -9,6 +9,7 @@ TagManager:
   - Harvester
   - Spawner
   - AttackingUnit
+  - Unit
   layers:
   - Default
   - TransparentFX
