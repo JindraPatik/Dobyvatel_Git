@@ -10,47 +10,64 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _playerHealth; 
     [SerializeField] private TMP_Text _PlayerHealthTXT;
     [SerializeField] private GameObject _unitGO;
+    [SerializeField] private TMP_Text _gameOver;
     private UnitActions _unitActions;
     private PlayerSO.Faction _myfaction;
-    private float _unitStrenght;    
+    private float _unitStrenght;
+    private bool _isDead;    
     
 
     private void Awake() 
     {
-        _unitActions = _unitGO.GetComponent<UnitActions>();
+        _unitActions = _unitGO.GetComponent<UnitActions>(); //initialize reference to UnitActions
     }
 
     private void Start() 
     {
-       
-        _playerHealth = _playerSO.GetPlayerHealh();
-        _unitStrenght = _unitActions._unit.GetAttackerStrenght();//nefunguje!!!
-        Debug.Log("Unit damage tohle: " + _unitStrenght); //nefunguje!!!
+        _isDead = false; //starting alive ;)
+        _gameOver.enabled = false; //napis Game over vyply
+        _playerHealth = _playerSO.GetPlayerHealh(); //load HP from _playerSO
+        _unitStrenght = _unitActions._unit.GetAttackerStrenght(); //load unit strenght from UnitSO
     }
-    
-    // public float _resourcesValue = 0;
 
     void Update()
     {
-        _PlayerHealthTXT.text = ((int)_playerHealth).ToString();
+        _PlayerHealthTXT.text = ((int)_playerHealth).ToString(); //show Player's HP
     }
 
-    private void TakedamageFromUnit()
+    private void TakedamageFromUnit() //decrease Player Health on hit
     {
         _playerHealth -= _unitStrenght;
-        Debug.Log("Unit damage: " + _unitStrenght);
-
+        Debug.Log(_playerHealth + " HP");
+        // if(_playerHealth <= 0f)
+        // {
+        //     Die();
+        // }
     }
 
-   
+    // private void Die() 
+    // {
+    //     Debug.Log(this.gameObject + "is DEAD. GAME OVER");
+    //     Debug.Log(_playerHealth + " HP");
+    //     _isDead = true;
+    //     _gameOver.enabled = true;
+    // }
 
-    private void OnTriggerEnter(Collider other) 
+    public bool isDead()
     {
-        
-        if(other.gameObject.CompareTag("Unit"))
+        return _isDead;
+    }
+
+    private void OnTriggerEnter(Collider other) //Player(alive) collides with Unit
+    {
+        // while (!_isDead)
         {
-            TakedamageFromUnit();
-            Debug.Log("collision with base");
+            if(other != null && other.gameObject.CompareTag("Unit"))
+            {
+                TakedamageFromUnit();
+                Destroy(other.gameObject);
+            }
+
         }
         
     }
