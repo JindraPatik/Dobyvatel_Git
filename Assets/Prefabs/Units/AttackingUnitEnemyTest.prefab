@@ -129,3 +129,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unit: {fileID: 11400000, guid: e774dc1b72904334e9648f397a110be3, type: 2}
+  _myStrenght: 0

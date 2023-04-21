@@ -9,22 +9,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerSO _playerSO;
     [SerializeField] private float _playerHealth; 
     [SerializeField] private TMP_Text _PlayerHealthTXT;
-    [SerializeField] private GameObject _unit;
+    [SerializeField] private GameObject _unitGO;
     private UnitActions _unitActions;
     private PlayerSO.Faction _myfaction;
+    private float _unitStrenght;    
     
 
     private void Awake() 
     {
-        _unitActions = _unit.GetComponent<UnitActions>();
+        _unitActions = _unitGO.GetComponent<UnitActions>();
     }
 
     private void Start() 
     {
        
-        Debug.Log(_unitActions.GetUnitStrenght()); 
-        _playerHealth = _playerSO.GetPlayerHealh(); //tohle nefunguje!!!
-       
+        _playerHealth = _playerSO.GetPlayerHealh();
+        _unitStrenght = _unitActions._unit.GetAttackerStrenght();//nefunguje!!!
+        Debug.Log("Unit damage tohle: " + _unitStrenght); //nefunguje!!!
     }
     
     // public float _resourcesValue = 0;
@@ -36,23 +37,12 @@ public class PlayerController : MonoBehaviour
 
     private void TakedamageFromUnit()
     {
-        _playerHealth -= _unitActions.GetUnitStrenght();
-        Debug.Log("Unit damage: " + _unitActions.GetUnitStrenght());
+        _playerHealth -= _unitStrenght;
+        Debug.Log("Unit damage: " + _unitStrenght);
 
     }
 
-
-    private string GetMyFactionString()
-    {
-        string _myfaction = _playerSO.GetFaction().ToString();
-        return _myfaction;
-    }
-
-    private string GetUnitFactionString()
-    {
-        string _unitFaction = _unitActions.GetUnitFaction().ToString();
-        return _unitFaction;
-    }
+   
 
     private void OnTriggerEnter(Collider other) 
     {

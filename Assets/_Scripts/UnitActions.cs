@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class UnitActions : MonoBehaviour
 {
-[SerializeField] AttackingUnitSO _unit;
+public AttackingUnitSO _unit;
 private float _myStrenght;
 private float _speed;
 Rigidbody _myRigidBody;
 AttackingUnitSO.Faction _myFaction;
 private const string UnitTag = "Unit";
+PlayerController playerController; //x
+GameObject _player; //x
+
+private void Awake() 
+{
+    
+}
 
 
 
@@ -20,8 +27,6 @@ private void Start()
     _speed = (_unit.GetAttackerMoveSpeed()); //take value of _speed from AttackingUnitSO
     _myStrenght = _unit.GetAttackerStrenght();
     _myFaction = _unit.GetFaction();
-    
-
 }
 
 private void Update() 
