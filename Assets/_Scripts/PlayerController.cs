@@ -37,21 +37,23 @@ public class PlayerController : MonoBehaviour
 
     private void TakedamageFromUnit() //decrease Player Health on hit
     {
-        _playerHealth -= _unitStrenght;
-        Debug.Log(_playerHealth + " HP");
-        // if(_playerHealth <= 0f)
-        // {
-        //     Die();
-        // }
+        if(_playerHealth > 0f)
+        {
+            _playerHealth -= _unitStrenght;
+            Debug.Log(_playerHealth + " HP");
+        }
+       
+        else
+        {
+            Die();
+        }
     }
 
-    // private void Die() 
-    // {
-    //     Debug.Log(this.gameObject + "is DEAD. GAME OVER");
-    //     Debug.Log(_playerHealth + " HP");
-    //     _isDead = true;
-    //     _gameOver.enabled = true;
-    // }
+    private void Die() 
+    {
+        _isDead = true;
+        _gameOver.enabled = true;
+    }
 
     public bool isDead()
     {
