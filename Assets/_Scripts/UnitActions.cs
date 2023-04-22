@@ -9,9 +9,10 @@ private float _myStrenght;
 private float _speed;
 Rigidbody _myRigidBody;
 AttackingUnitSO.Faction _myFaction;
-private const string UnitTag = "Unit";
-PlayerController playerController; //x
-GameObject _player; //x
+private const string _unitTag = "Unit";
+private const string _harvesterTag = "Harvester";
+
+
 
 private void Awake() 
 {
@@ -62,7 +63,7 @@ private void OnTriggerEnter(Collider other)
 
     if(other.gameObject.TryGetComponent(out UnitActions unit))
     {
-        if(_myFaction != unit.GetUnitFaction() && other.gameObject.CompareTag(UnitTag)) //pokud ma jednotka a utocnik jinou frakci
+        if(_myFaction != unit.GetUnitFaction() && other.gameObject.CompareTag(_unitTag)) //pokud ma jednotka a utocnik jinou frakci
         Debug.Log("Trigger works.");
         {
             float attackerStrenght = unit.GetUnitStrenght();
@@ -84,10 +85,15 @@ private void OnTriggerEnter(Collider other)
                 UnitDie();
                 Destroy(other.gameObject);
                 Debug.Log("Jednotky se navzajem znicily.");
-
             }
 
         }
+        
+        // else if(other.gameObject.CompareTag(_harvesterTag)) //znic nepratelsky harvester
+        // {
+        //     Debug.Break();
+        //     Destroy(other.gameObject);
+        // }
     }
 
 }

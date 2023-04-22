@@ -15,7 +15,7 @@ MonoBehaviour:
   _prefab: {fileID: 5493394640081735776, guid: 3ec7a59055e61c042872e1143e5c5428, type: 3}
   _spawnPoint: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
   _attackerMoveSpeed: 0
-  _strenght: 5
+  _strenght: 6
   _price: 3
   SpawnAvailable: 1
   _canHarvest: 0

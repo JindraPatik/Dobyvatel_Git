@@ -11,6 +11,7 @@ public class HarvesterScript : MonoBehaviour
    private MeshRenderer myMeshRenderer;
    private const string _crystalTag = "Crystal";
    private const string _spawnerTag = "Spawner";  
+   private const string _unit = "Unit";
    UnitSpawner _unitSpawner;
    [SerializeField] GameObject _spawner;
 
@@ -73,6 +74,11 @@ public class HarvesterScript : MonoBehaviour
                          UnLoadHarvester();
                          Destroy(this.gameObject, 1f);
                     }     
+
+               else if(other.gameObject.CompareTag(_unit)) //znici harvestera pri kolizi s jakoukoli jednotkou
+               {
+                    Destroy(this.gameObject);
+               }
           
     }
 

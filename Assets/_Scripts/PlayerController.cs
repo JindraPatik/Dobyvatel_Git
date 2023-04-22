@@ -11,15 +11,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TMP_Text _PlayerHealthTXT;
     [SerializeField] private GameObject _unitGO;
     [SerializeField] private TMP_Text _gameOver;
+    [SerializeField] private GameObject _harvester;
+    HarvesterScript _harvesterScript;
     private UnitActions _unitActions;
     private PlayerSO.Faction _myfaction;
     private float _unitStrenght;
+    private float _harvesterStrenght;
     private bool _isDead;    
+    private const string _unitTag = "Unit";
+    private const string _harvesterTag = "Harvester"; 
     
 
     private void Awake() 
     {
         _unitActions = _unitGO.GetComponent<UnitActions>(); //initialize reference to UnitActions
+        _harvesterScript = _harvester.GetComponent<HarvesterScript>();
     }
 
     private void Start() 
@@ -49,6 +55,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void TakedamageFromHarvester()
+    {
+        _harvesterStrenght = _harvesterScript._attackingUnit.GetAttackerStrenght();
+        _playerHealth -= _harvesterStrenght;
+        Debug.Log(_playerHealth + " HP");
+
+    }
+
     private void Die() 
     {
         _isDead = true;
@@ -62,11 +76,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) //Player(alive) collides with Unit
     {
-        // while (!_isDead)
         {
-            if(other != null && other.gameObject.CompareTag("Unit"))
+            if(other != null && other.gameObject.CompareTag(_unitTag)) 
             {
                 TakedamageFromUnit();
+                Destroy(other.gameObject);
+            }
+            else if(other.gameObject.CompareTag(_harvesterTag))
+            {
+                TakedamageFromHarvester();
                 Destroy(other.gameObject);
             }
 
