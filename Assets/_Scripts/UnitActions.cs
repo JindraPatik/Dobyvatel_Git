@@ -19,9 +19,6 @@ private void Awake()
     
 }
 
-
-
-
 private void Start() 
 {
     _myRigidBody = GetComponent<Rigidbody>();
@@ -59,7 +56,6 @@ public float GetUnitStrenght()
 
 private void OnTriggerEnter(Collider other) 
 {
-    // Debug.Break();
 
     if(other.gameObject.TryGetComponent(out UnitActions unit))
     {
@@ -89,11 +85,6 @@ private void OnTriggerEnter(Collider other)
 
         }
         
-        // else if(other.gameObject.CompareTag(_harvesterTag)) //znic nepratelsky harvester
-        // {
-        //     Debug.Break();
-        //     Destroy(other.gameObject);
-        // }
     }
 
 }

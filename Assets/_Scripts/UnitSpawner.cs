@@ -26,6 +26,7 @@ public class UnitSpawner : MonoBehaviour
         _NotEnoughResourcesTXT.enabled = false;
     }
 
+
     void FixedUpdate()
     {
         _ResourcesTXT.text = ((int)_resourcesValue).ToString();
@@ -77,13 +78,16 @@ public class UnitSpawner : MonoBehaviour
             {
 
             if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
-                {
-                    _resourcesValue += _crystalScript.GetCrystalValue();
-                    Debug.Log(_crystalScript.GetCrystalValue() + " added to resources");
-                    
-                }
+            {
+                CrystalsDelivered();
+                Debug.Log(_crystalScript.GetCrystalValue() + " added to resources");
+
             }
         }
+        }
 
-
+    private void CrystalsDelivered()
+    {
+        _resourcesValue += _crystalScript.GetCrystalValue();
+    }
 }

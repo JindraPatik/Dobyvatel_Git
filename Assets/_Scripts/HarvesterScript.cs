@@ -55,33 +55,37 @@ public class HarvesterScript : MonoBehaviour
         _myRigidBody.velocity = new Vector3 (speed, 0f, 0f);
     }
 
-    public bool IsHarvester() 
-    {
-        return _attackingUnit.CanHarvest();
-    }
+//     public bool IsHarvester() 
+//     {
+//         return _attackingUnit.CanHarvest();
+//     }
 
     private void OnTriggerEnter(Collider other) 
     {
                if(other.gameObject.CompareTag(_crystalTag) && !IsHarvesterLoaded())
                     {
                          LoadHarvester();
-                         _speed = -_speed; //flip direction of unit x
+                         FlipDirection(); //flip direction of unit x
                          Destroy(other.gameObject);
                     }
-          
-               else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
+
+        else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
                     {
                          UnLoadHarvester();
                          Destroy(this.gameObject, 1f);
                     }     
 
                else if(other.gameObject.CompareTag(_unit)) //znici harvestera pri kolizi s jakoukoli jednotkou
-               {
-                    Destroy(this.gameObject);
-               }
-          
+                    {
+                         Destroy(this.gameObject);
+                    }
+               
     }
 
-   
+    private void FlipDirection()
+    {
+        _speed = -_speed;
+    }
+
 
 }
