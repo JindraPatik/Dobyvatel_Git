@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,12 +15,20 @@ public class HarvesterScript : MonoBehaviour
    private const string _spawnerTag = "Spawner";  
    private const string _unit = "Unit";
    private const string _harvesterTag = "Harvester";
+   [SerializeField] private float _moveUpHeight;
    UnitSpawner _unitSpawner;
    [SerializeField] GameObject _spawner;
+   [SerializeField] private float _moveUpTimeSpeed;
+   [SerializeField] private float _startTime;
+   [SerializeField] private float _endTime;
+   private bool _isMoving = true;
+   private bool _isMovingUp = false;
 
    private void Awake() 
    {
           _unitSpawner = _spawner.GetComponent<UnitSpawner>();
+          
+
    }
 
    private void Start() 
@@ -32,20 +41,32 @@ public class HarvesterScript : MonoBehaviour
 
    private void Update() 
    {
-          Move(_speed); //constantly move x axis
+          if(_isMoving)
+          {
+               Move(_speed); //constantly move x axis
+          }
+          else
+          {
+               Move(0f);
+          }
+          
+
+          Debug.Log("is moving: " + _isMoving);
+          Debug.Log("is movingUP: " + _isMovingUp);
+
+          
    }
 
    public void UnLoadHarvester() 
    {
         _isLoaded = false;
-        this.myMeshRenderer.material.SetColor("_Red", Color.red);
+     //    this.myMeshRenderer.material.SetColor("_Red", Color.red);
    }
    
    public void LoadHarvester()
    {
-        
         _isLoaded = true;
-        this.myMeshRenderer.material.SetColor("_Green", Color.green);
+     //    this.myMeshRenderer.material.SetColor("_Green", Color.green);
    } 
 
     public bool IsHarvesterLoaded()
@@ -63,17 +84,48 @@ public class HarvesterScript : MonoBehaviour
         return _attackingUnit.CanHarvest();
     }
 
+
+
+    private void FlipDirection()
+    {
+          _speed = -_speed;
+    }
+
+
+    private void StartHarvester()
+    {
+          _isMoving = true;
+
+    }
+
+    private void StopHarvester()
+    {
+          _isMoving = false;
+    }
+
+    IEnumerator MoveUp()
+    {
+          Vector3 myPosition = _myRigidBody.transform.position;
+          Vector3 desiredPosition = myPosition + new Vector3(0f, _moveUpHeight, 0f);
+          yield return new WaitForSeconds(5f * Time.deltaTime);
+          _startTime = Mathf.MoveTowards(_startTime, _endTime, _moveUpTimeSpeed * Time.deltaTime);
+          _myRigidBody.transform.position = Vector3.MoveTowards(myPosition, desiredPosition, _startTime);
+          _isMovingUp = false;
+    }
+
+
     private void OnTriggerEnter(Collider other) 
     {
                if(other.gameObject.CompareTag(_crystalTag) && !IsHarvesterLoaded())
                     {
                          LoadHarvester();
                          Destroy(other.gameObject);
-
+          
                          StopHarvester();
-                         MoveUp();
+                         StartCoroutine(MoveUp()) ; 
                          StartHarvester();
                          FlipDirection(); //flip direction of unit x
+
                     }
 
         else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
@@ -86,35 +138,7 @@ public class HarvesterScript : MonoBehaviour
                     {
                          Destroy(this.gameObject);
                     }
-
-               
                
     }
-
-    private void FlipDirection()
-    {
-          _speed = -_speed;
-    }
-
-    private void StopHarvester()
-    {
-          _speed = _stop;
-          Debug.Log("stop???" + _speed);
-    }
-
-    private void StartHarvester()
-    {
-          _speed = _initialSpeed;
-    }
-
-    private void MoveUp()
-    {
-          Vector3 myPosition = _myRigidBody.transform.position;
-          Vector3 desiredPosition = myPosition + new Vector3(0f, 30f, 0f);
-          myPosition = Vector3.MoveTowards(myPosition, desiredPosition, 3f);
-    }
-
-
-     
 
 }

@@ -129,7 +129,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackingUnit: {fileID: 11400000, guid: b8d6b9d550e1c3e48908ff69b6e2d4b0, type: 2}
+  _moveUpHeight: 12
   _spawner: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+  _moveUpTimeSpeed: 2
+  _startTime: 1
+  _endTime: 5
 --- !u!1001 &5290142380672998262
 PrefabInstance:
   m_ObjectHideFlags: 0
