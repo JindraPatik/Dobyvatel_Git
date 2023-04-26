@@ -21,8 +21,10 @@ public class HarvesterScript : MonoBehaviour
    [SerializeField] private float _moveUpTimeSpeed;
    [SerializeField] private float _startTime;
    [SerializeField] private float _endTime;
+   [SerializeField] private Vector3 _goalRotation;
    private bool _isMoving = true;
    private bool _isMovingUp = false;
+   [SerializeField] AnimationCurve _curve;
 
    private void Awake() 
    {
@@ -53,17 +55,24 @@ public class HarvesterScript : MonoBehaviour
                     if(_isMovingUp)
                     {
                          MoveUp();
-                         Debug.Log("starttime: " + _isMovingUp);
+                         RotateOneEighty();
+                              
                     }
+
           }          
+          if(_startTime == _endTime)
+          {
+               StartHarvester();
+          }
 
                    
 
-          // Debug.Log("is moving: " + _isMoving);
-          // Debug.Log("is movingUP: " + _isMovingUp);
+          Debug.Log("Start time: " + _startTime);
+          Debug.Log("End time: " + _endTime);
 
           
    }
+   
 
    public void UnLoadHarvester() 
    {
@@ -103,8 +112,8 @@ public class HarvesterScript : MonoBehaviour
     private void StartHarvester()
     {
           _isMoving = true;
-
     }
+
 
     private void StopHarvester()
     {
@@ -121,7 +130,12 @@ public class HarvesterScript : MonoBehaviour
           Vector3 myPosition = _myRigidBody.transform.position;
           Vector3 desiredPosition = new Vector3(_myRigidBody.transform.position.x, _moveUpHeight, _myRigidBody.transform.position.z);
           _startTime = Mathf.MoveTowards(_startTime, _endTime, _moveUpTimeSpeed * Time.deltaTime);
-          _myRigidBody.transform.position = Vector3.MoveTowards(myPosition, desiredPosition, _startTime);
+          _myRigidBody.transform.position = Vector3.MoveTowards(myPosition, desiredPosition, _curve.Evaluate(_startTime));
+    }
+
+    private void RotateOneEighty()
+    {
+          transform.rotation = Quaternion.Lerp(Quaternion.Euler(Vector3.zero), Quaternion.Euler(_goalRotation), _curve.Evaluate(_startTime));
     }
 
 
@@ -133,9 +147,7 @@ public class HarvesterScript : MonoBehaviour
                          Destroy(other.gameObject);
                          StopHarvester();
                          EnableMoveUp();
-                         
-                         // StartHarvester();
-                         // FlipDirection(); //flip direction of unit x
+                         FlipDirection(); //flip direction of unit x
 
                     }
 
