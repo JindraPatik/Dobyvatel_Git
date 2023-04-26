@@ -56,7 +56,6 @@ public class HarvesterScript : MonoBehaviour
                     {
                          MoveUp();
                          RotateOneEighty();
-                              
                     }
 
           }          
@@ -67,8 +66,9 @@ public class HarvesterScript : MonoBehaviour
 
                    
 
-          Debug.Log("Start time: " + _startTime);
+          // Debug.Log("Start time: " + _startTime);
           Debug.Log("End time: " + _endTime);
+          Debug.Log("Is moving: " + _isMoving);
 
           
    }
