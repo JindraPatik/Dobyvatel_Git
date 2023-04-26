@@ -60,7 +60,7 @@ private void OnTriggerEnter(Collider other)
     if(other.gameObject.TryGetComponent(out UnitActions unit))
     {
         if(_myFaction != unit.GetUnitFaction() && other.gameObject.CompareTag(_unitTag)) //pokud ma jednotka a utocnik jinou frakci
-        Debug.Log("Trigger works.");
+        
         {
             float attackerStrenght = unit.GetUnitStrenght();
 
