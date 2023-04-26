@@ -45,14 +45,22 @@ public class HarvesterScript : MonoBehaviour
           {
                Move(_speed); //constantly move x axis
           }
-          else
+
+          else 
           {
                Move(0f);
-          }
-          
 
-          Debug.Log("is moving: " + _isMoving);
-          Debug.Log("is movingUP: " + _isMovingUp);
+                    if(_isMovingUp)
+                    {
+                         MoveUp();
+                         Debug.Log("starttime: " + _isMovingUp);
+                    }
+          }          
+
+                   
+
+          // Debug.Log("is moving: " + _isMoving);
+          // Debug.Log("is movingUP: " + _isMovingUp);
 
           
    }
@@ -103,14 +111,17 @@ public class HarvesterScript : MonoBehaviour
           _isMoving = false;
     }
 
-    IEnumerator MoveUp()
+    private void EnableMoveUp()
+    {
+          _isMovingUp = true;
+    }
+
+    private void MoveUp()
     {
           Vector3 myPosition = _myRigidBody.transform.position;
-          Vector3 desiredPosition = myPosition + new Vector3(0f, _moveUpHeight, 0f);
-          yield return new WaitForSeconds(5f * Time.deltaTime);
+          Vector3 desiredPosition = new Vector3(_myRigidBody.transform.position.x, _moveUpHeight, _myRigidBody.transform.position.z);
           _startTime = Mathf.MoveTowards(_startTime, _endTime, _moveUpTimeSpeed * Time.deltaTime);
           _myRigidBody.transform.position = Vector3.MoveTowards(myPosition, desiredPosition, _startTime);
-          _isMovingUp = false;
     }
 
 
@@ -120,11 +131,11 @@ public class HarvesterScript : MonoBehaviour
                     {
                          LoadHarvester();
                          Destroy(other.gameObject);
-          
                          StopHarvester();
-                         StartCoroutine(MoveUp()) ; 
-                         StartHarvester();
-                         FlipDirection(); //flip direction of unit x
+                         EnableMoveUp();
+                         
+                         // StartHarvester();
+                         // FlipDirection(); //flip direction of unit x
 
                     }
 
