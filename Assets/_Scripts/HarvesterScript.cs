@@ -62,6 +62,7 @@ public class HarvesterScript : MonoBehaviour
           if(_startTime == _endTime)
           {
                StartHarvester();
+               _isMovingUp = false;
           }
 
                    
@@ -100,7 +101,6 @@ public class HarvesterScript : MonoBehaviour
     {
         return _attackingUnit.CanHarvest();
     }
-
 
 
     private void FlipDirection()
@@ -144,7 +144,7 @@ public class HarvesterScript : MonoBehaviour
                if(other.gameObject.CompareTag(_crystalTag) && !IsHarvesterLoaded())
                     {
                          LoadHarvester();
-                         Destroy(other.gameObject);
+                         Destroy(other.gameObject); //destroy crystal
                          StopHarvester();
                          EnableMoveUp();
                          FlipDirection(); //flip direction of unit x
