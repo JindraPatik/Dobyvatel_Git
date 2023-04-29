@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17574611, g: 0.21991934, b: 0.3022477, a: 1}
+  m_IndirectSpecularColor: {r: 0.17574663, g: 0.21992004, b: 0.30224866, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4277,19 +4277,39 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 445841902}
     m_Modifications:
+    - target: {fileID: 85267016, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: m_Size.y
+      value: 40.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 85267016, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: m_Size.z
+      value: 18.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 85267016, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: m_Center.x
+      value: -53.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 85267016, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: m_Center.y
+      value: 11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
       propertyPath: m_Name
       value: AttackerSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+    - target: {fileID: 2733146230181867521, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: _crystal
       value: 
       objectReference: {fileID: 1710249217}
-    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+    - target: {fileID: 0}
       propertyPath: _ResourcesTXT
       value: 
       objectReference: {fileID: 2109260325}
-    - target: {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+    - target: {fileID: 0}
       propertyPath: _NotEnoughResourcesTXT
       value: 
       objectReference: {fileID: 1019861059}
@@ -4337,8 +4357,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2733146230181867522, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3a09aa8db926c84daba1a9b33886b8e, type: 3}
 --- !u!1001 &2801876586180232108
 PrefabInstance:
@@ -4353,7 +4372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1606590854305688801, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 124.44778
+      value: 92.7
       objectReference: {fileID: 0}
     - target: {fileID: 1606590854305688801, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4394,6 +4413,10 @@ PrefabInstance:
     - target: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
       propertyPath: m_Name
       value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3831460102913966575, guid: a31c23dc50c866d41a51cbcb8480871c, type: 3}
       propertyPath: m_TagString

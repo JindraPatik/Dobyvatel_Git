@@ -59,17 +59,15 @@ public class HarvesterScript : MonoBehaviour
                     }
 
           }          
+
           if(_startTime == _endTime)
           {
                StartHarvester();
                _isMovingUp = false;
           }
 
-                   
-
-          // Debug.Log("Start time: " + _startTime);
-          Debug.Log("End time: " + _endTime);
-          Debug.Log("Is moving: " + _isMoving);
+        
+          Debug.Log("Is loaded: " + IsHarvesterLoaded());
 
           
    }
@@ -151,10 +149,11 @@ public class HarvesterScript : MonoBehaviour
 
                     }
 
-        else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
-                    {
-                         UnLoadHarvester();
-                         Destroy(this.gameObject, 1f);
+               else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
+                              {
+                                   UnLoadHarvester();
+                                   Debug.Break();
+                                   Destroy(this.gameObject, 1f);
                     }     
 
                else if(other.gameObject.CompareTag(_unit) && !IsHarvester()) //znici harvestera pri kolizi s jakoukoli jednotkou krom harvestera
