@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 TakedamageFromUnit();
                 Destroy(other.gameObject);
             }
-            else if(other.gameObject.CompareTag(_harvesterTag))
+            else if(other.gameObject.CompareTag(_harvesterTag) && _harvesterScript._attackingUnit.GetFaction() != _unitActions.GetUnitFaction())
             {
                 TakedamageFromHarvester();
                 Destroy(other.gameObject);

@@ -67,7 +67,7 @@ public class HarvesterScript : MonoBehaviour
           }
 
         
-          Debug.Log("Is loaded: " + IsHarvesterLoaded());
+          
 
           
    }
@@ -152,8 +152,7 @@ public class HarvesterScript : MonoBehaviour
                else if(other.gameObject.CompareTag(_spawnerTag) && IsHarvesterLoaded())
                               {
                                    UnLoadHarvester();
-                                   Debug.Break();
-                                   Destroy(this.gameObject, 1f);
+                                   Destroy(this.gameObject);
                     }     
 
                else if(other.gameObject.CompareTag(_unit) && !IsHarvester()) //znici harvestera pri kolizi s jakoukoli jednotkou krom harvestera

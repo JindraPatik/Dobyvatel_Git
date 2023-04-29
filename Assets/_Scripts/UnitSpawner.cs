@@ -80,14 +80,13 @@ public class UnitSpawner : MonoBehaviour
             if(other.gameObject.tag == "Harvester" && harvesterScript.IsHarvesterLoaded())
             {
                 CrystalsDelivered();
-                Debug.Log(_crystalScript.GetCrystalValue() + " added to resources");
-
             }
         }
         }
 
     private void CrystalsDelivered()
     {
+        Debug.Log(_crystalScript.GetCrystalValue() + " added to resources");
         _resourcesValue += _crystalScript.GetCrystalValue();
     }
 }
